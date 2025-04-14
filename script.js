@@ -39,14 +39,15 @@ function playRound(humanChoice, computerChoice) {
         resultArea.value += "L'ordinateur a gagné ce round ! " + computerChoice + " bat " + humanChoice + "\n";
         computerScore++;
     }
+
     resultArea.value += "Score actuel - Humain : " + humanScore + " | Ordinateur : " + computerScore + "\n";
-    
-    // Check for winner
+
+    // Vérifie si l'un des joueurs a gagné
     if (humanScore >= 5) {
-        resultArea.value += "Félicitations ! Vous avez gagné le jeu !\n";
+        resultArea.value += "🎉 Félicitations ! Vous avez gagné le jeu !\n";
         resetGame();
     } else if (computerScore >= 5) {
-        resultArea.value += "L'ordinateur a gagné le jeu !\n";
+        resultArea.value += "😢 L'ordinateur a gagné le jeu !\n";
         resetGame();
     }
 }
@@ -54,8 +55,12 @@ function playRound(humanChoice, computerChoice) {
 function resetGame() {
     humanScore = 0;
     computerScore = 0;
-    document.getElementById("result-area").value = ""; // Reset result area
+    // Laisse le message final s'afficher pendant 3 secondes avant de réinitialiser
+    setTimeout(() => {
+        document.getElementById("result-area").value = "";
+    }, 3000);
 }
 
-// Lancer le jeu
-document.addEventListener("DOMContentLoaded", playGame); // Ensure the DOM is loaded
+// Lance le jeu une fois que le DOM est prêt
+document.addEventListener("DOMContentLoaded", playGame);
+//test
